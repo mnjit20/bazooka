@@ -1,0 +1,38 @@
+const express = require('express');
+const router = express.Router();
+const mongoose = require('mongoose');
+
+// Post model
+const Creator = require('../models/Creator');
+const Category = require('../models/Category');
+
+router.get('/test', (req, res) => res.json({ msg: 'Test Works' }));
+
+router.get('/all', (req, res)=>{
+    //Creator.find({reach: {$gt: 0, }}).sort({reach:-1}).collation({locale: "en_US", numericOrdering: true}).limit(20)
+    Creator.find()
+    .sort({reach:-1}).collation({locale: "en_US", numericOrdering: true}).limit(20)
+    .exec()
+      .then(results=> {
+         const response = {
+            count  : results.length,
+            creator: results.map(result=>{
+                return {
+                    name : result.name,
+                    _id :  result._id,
+                    reach: result.reach,
+                    cat_id:result.cat_id,
+                    channel_name:result.channel_name,
+                    category_name: result.category_name,
+                }
+            })
+        };
+        
+        res.status(200).json(response);
+    })
+    .catch(err=>res.status(404).json({
+        error: err
+    }));
+});
+
+module.exports = router;  
