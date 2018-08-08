@@ -6,7 +6,6 @@ import Footer from './components/layout/footer';
 import LeftNavBar from './components/layout/leftnavbar';
 import RightFilterNavBar from './components/layout/rightfilternavbar';
 import ResultBar from './components/layout/resultbar';
-import Creator from './components/layout/creator';
 
 
 
@@ -25,12 +24,6 @@ class App extends Component {
           </div>
 
           <ResultBar />
-
-          <div className="inflBox">
-            <Creator />
-          </div>
-
-
         </div>
       </div>
     );

@@ -9,7 +9,7 @@ const Category = require('../models/Category');
 router.get('/test', (req, res) => res.json({ msg: 'Test Works' }));
 
 router.get('/all', (req, res)=>{
-    Creator.find({reach: {$gt: 0}}).sort({reach:-1}).collation({locale: "en_US", numericOrdering: true}) //.limit(50)
+    Creator.find({reach: {$gt: 0}}).sort({reach:-1}).collation({locale: "en_US", numericOrdering: true}).limit(50)
     .populate('cat_id',['wall_cat','wall_cat_code'])
     .exec()
       .then(creators=> {
