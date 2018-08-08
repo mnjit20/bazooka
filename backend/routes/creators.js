@@ -27,8 +27,39 @@ router.get('/all', (req, res)=>{
             })
         };       
         res.status(200).json(response);
+    })   
+});
+
+
+router.get('/list/:youtube?/:facebook?/:insta?', (req, res)=>{
+    const yt = req.params.youtube;
+    const fb =  req.params.facebook;
+    const insta = req.params.insta;
+
+    
+    const query = {"category_name":"Entertainment"};
+    Creator.find({"category_name":"Entertainment", reach:{$gt: 0}}).sort({reach:-1}).collation({locale: "en_US", numericOrdering: true}) .limit(50)
+    .populate('cat_id',['wall_cat','wall_cat_code'])
+    .exec()
+      .then(creators=> {
+         const response = {
+            count  : creators.length,
+            creator: creators.map(creator=>{
+                return {
+                    name : creator.name,
+                    _id :  creator._id,
+                    reach: creator.reach,
+                    cat_id:creator.cat_id,
+                    channel_name:creator.channel_name,
+                    category_name: creator.category_name,
+                }
+            })
+        };       
+        res.status(200).json(response);
     })
-   
+    .catch(err=>res.status(400).json({
+        error:err
+    }))
 });
 
 module.exports = router;  
