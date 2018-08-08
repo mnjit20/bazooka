@@ -36,7 +36,9 @@ router.get('/list/:youtube?/:facebook?/:insta?', (req, res)=>{
     const fb =  req.params.facebook;
     const insta = req.params.insta;
 
-    console.log('aa');
+    console.log('aa bb');
+
+    
     const query = {"category_name":"Entertainment"};
     Creator.find({"category_name":"Entertainment", reach:{$gt: 0}}).sort({reach:-1}).collation({locale: "en_US", numericOrdering: true}) .limit(50)
     .populate('cat_id',['wall_cat','wall_cat_code'])
