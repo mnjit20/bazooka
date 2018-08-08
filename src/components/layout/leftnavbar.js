@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class LeftNavBar extends Component {
   render() {
@@ -7,10 +7,14 @@ class LeftNavBar extends Component {
       <div className="leftBox">
         <ul>
           <li className="submenu active">
-            <a className="dashboard" href="/dashboard">Dashboard</a>
+            <a className="dashboard" href="/dashboard">
+              Dashboard
+            </a>
           </li>
           <li className="submenu">
-            <a className="project" href="">Projects</a>
+            <a className="project" href="">
+              Projects
+            </a>
             <ul>
               <li>
                 <a href="/addProject">Add New</a>
@@ -22,11 +26,12 @@ class LeftNavBar extends Component {
               <li>
                 <a href="/completedProjectList">Completed</a>
               </li>
-
             </ul>
           </li>
           <li className="submenu">
-            <a className="partner" href="">Partner</a>
+            <a className="partner" href="">
+              Partner
+            </a>
             <ul>
               <li>
                 <a href="/creators-list">Creators</a>
@@ -38,8 +43,7 @@ class LeftNavBar extends Component {
           </li>
         </ul>
       </div>
-
-    )
+    );
   }
 }
 
