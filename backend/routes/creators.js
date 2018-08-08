@@ -33,6 +33,7 @@ router.get('/all', (req, res)=>{
 
 router.get('/list/:youtube?/:facebook?/:insta?', (req, res)=>{
     const yt = req.params.youtube;
+    
     const fb =  req.params.facebook;
     const insta = req.params.insta;
 
