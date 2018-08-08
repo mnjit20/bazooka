@@ -1,0 +1,62 @@
+const express = require('express');
+const router = express.Router();
+const mongoose = require('mongoose');
+
+// Post model
+const Creator = require('../models/Creator');
+const Category = require('../models/Category');
+
+router.get('/test', (req, res) => res.json({ msg: 'Test Works' }));
+
+router.get('/all', (req, res)=>{
+    Creator.find({reach: {$gt: 0}}).sort({reach:-1}).collation({locale: "en_US", numericOrdering: true})
+    .exec()
+      .then(creators=> {
+        //  const response = {
+        //     count  : results.length,
+        //     creator: results.map(result=>{
+        //         return {
+        //             name : result.name,
+        //             _id :  result._id,
+        //             reach: result.reach,
+        //             cat_id:result.cat_id,
+        //             channel_name:result.channel_name,
+        //             category_name: result.category_name,
+        //         }
+        //     })
+        // };
+
+        const creator_id = creators.map(function (creators) { return creators._id; });
+        const cat_id = creators.map(function (creators) { return creators.cat_id; });
+        //console.log(cat_id,creator_id); 
+        // Category.find({id:cat_id}, (err, cats)=>{
+        //     const ncatId = cats.map(function (cats) { return cats._id; });
+        //     console.log(ncatId);   
+        // });
+        creators.forEach(function (creator) {
+           // console.log(creator.cat_id,creator._id);  
+            Category.find({id:creator.cat_id})
+            .exec()
+            .then(cats=> {    
+                const ncatId = cats[0]._id;
+                console.log(ncatId,cats[0].id,creator._id);  
+                Creator.findByIdAndUpdate({_id:creator._id}, {$set:{cat_id:ncatId}})
+                .exec()
+                .then(result=>{
+                        res.status(200).json({
+                        message:'Cat id updated successfully.'
+                    })
+                })
+            })
+            .catch(err=>res.status(404).json({
+                error: err
+            }));     
+           
+          });       
+        
+        //res.status(200).json(response);
+    })
+   
+});
+
+module.exports = router;  
