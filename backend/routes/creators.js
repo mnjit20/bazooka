@@ -47,7 +47,7 @@ router.post('/all', (req, res)=>{
             })
         };       
         res.status(200).json(response);
-    }) 
+    })  
     .catch(error=>res.json(error));
 });
 
