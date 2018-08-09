@@ -7,6 +7,8 @@ const router = express.Router();
 
 //routes
 const creators   = require('./routes/creators');
+const category   = require('./routes/category');
+const states     = require('./routes/states');
 
 //body parser
 app.use(bodyParser.urlencoded({extended:false}));
@@ -22,5 +24,7 @@ mongoose.connect(db, {useNewUrlParser:true})
 
 
 app.use('/creators', creators);
+app.use('/category', category);
+app.use('/states', states);
 app.get('/', (req, res) => res.send('Hello World!'));
 app.listen(7000, () => console.log('Example app listening on port 7000!'));
