@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const FacebookpostSchema = new Schema({
     _id:mongoose.Schema.Types.ObjectId,
     id:{type: String},
-    creatorid:{type: String},
+    creatorid:{type: String, ref:'Creator'},
     postId:{type: String},
     type:{type: String},
     link:{type: String},

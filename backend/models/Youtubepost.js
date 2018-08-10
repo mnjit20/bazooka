@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const YoutubepostSchema = new Schema({
     _id:mongoose.Schema.Types.ObjectId,
-    creatorid:{type: String},
+    creatorid:{type: String, ref:'Creator'},
+    //creatorid:{type: Schema.Types.ObjectId, ref:'Creator'},
     channelId:{type: String},
     videoId:{type: String},
     viewCount:{type: String},
