@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const CreatorSchema = new Schema({
     _id:mongoose.Schema.Types.ObjectId,
     creatorId:{type: Number},
-    cat_id:{type: Schema.Types.ObjectId, ref:'Category'},
+    cat_id:{type: mongoose.Schema.Types.ObjectId, ref:'Category'},
     user_id:{type: Number},
     name:{type: String},
     email:{type: String},

@@ -5,10 +5,22 @@ const mongoose = require("mongoose");
 // Post model
 const Creator = require("../models/Creator");
 const Category = require("../models/Category");
+const Youtubepost = require("../models/Youtubepost");
+const Facebookpost = require("../models/Facebookpost");
 
-router.get("/test", (req, res) => res.json({ msg: "Test Works" }));
+router.get("/test/:creatorID", (req, res) => {
+  Facebookpost.find({ creatorid: req.params.creatorID })
+    .exec()
+    .then(result => res.status(200).json(result))
+    .catch();
+});
 
 router.get("/all", (req, res) => {
+  res.status(200).json("test page");
+});
+
+//list of all creators and influencer
+router.post("/all", (req, res) => {
   Creator.find({ reach: { $gt: 0 } })
     .sort({ reach: -1 })
     .collation({ locale: "en_US", numericOrdering: true })
@@ -25,7 +37,47 @@ router.get("/all", (req, res) => {
             reach: creator.reach,
             cat_id: creator.cat_id,
             channel_name: creator.channel_name,
-            category_name: creator.category_name
+            category_name: creator.category_name,
+            fb_fan_count: creator.fb_fan_count,
+            yt_subscriber_count: creator.yt_subscriber_count,
+            ig_followers_count: creator.ig_followers_count,
+            address: creator.address,
+            yt_imageUrl: creator.yt_imageUrl,
+            isInf: creator.isInf,
+            status: creator.status
+          };
+        })
+      };
+      res.status(200).json(response);
+    })
+    .catch(error => res.json(error));
+});
+
+//list of influencr
+router.post("/influencer", (req, res) => {
+  Creator.find({ reach: { $gt: 50000 } })
+    .sort({ reach: -1 })
+    .collation({ locale: "en_US", numericOrdering: true })
+    .populate("cat_id", ["wall_cat", "wall_cat_code"])
+    .exec()
+    .then(creators => {
+      const response = {
+        count: creators.length,
+        creator: creators.map(creator => {
+          return {
+            name: creator.name,
+            _id: creator._id,
+            reach: creator.reach,
+            cat_id: creator.cat_id,
+            channel_name: creator.channel_name,
+            category_name: creator.category_name,
+            fb_fan_count: creator.fb_fan_count,
+            yt_subscriber_count: creator.yt_subscriber_count,
+            ig_followers_count: creator.ig_followers_count,
+            address: creator.address,
+            yt_imageUrl: creator.yt_imageUrl,
+            isInf: creator.isInf,
+            status: creator.status
           };
         })
       };
