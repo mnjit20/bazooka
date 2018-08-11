@@ -59,4 +59,58 @@ router.get('/all', (req, res)=>{
    
 });
 
+router.get('/all', (req, res)=>{
+    Creator.find({reach: {$gt: 0}}).sort({reach:-1}).collation({locale: "en_US", numericOrdering: true})
+    .exec()
+      .then(creators=> {
+        creators.forEach(function (creator) {
+          //  console.log(creator.creatorId,'====', creator._id);  
+           //Youtubepost.find({creatorid:'1'}).update({$set:{favoriteCount:'22'}})
+           Youtubepost.find({creatorid:creator.creatorId})
+            .exec()
+            .then(posts=> {    
+                posts.forEach(function(post){
+                    console.log(post._id, creator.creatorId, creator.creatorId);
+                    Youtubepost.findByIdAndUpdate({_id:post._id}, {$set:{creatorid:creator._id}})
+                    .exec()
+                    .then(result=>console.log('Creator id updated successfully.', creator.creatorId ))
+                    .catch(err=>res.status(404).json({
+                        error: err
+                    }));
+                })
+                
+            })
+                      
+          });       
+        
+    })
+   
+});
+
+router.get('/all', (req, res)=>{
+    Creator.find({reach: {$gt: 0}}).sort({reach:-1}).collation({locale: "en_US", numericOrdering: true})
+    .exec()
+      .then(creators=> {
+        creators.forEach(function (creator) {
+            //console.log(creator.creatorId,'====', creator._id);  
+           //Youtubepost.find({creatorid:'1'}).update({$set:{favoriteCount:'22'}})
+           Facebookpost.find({creatorid:creator.creatorId})
+            .exec()
+            .then(posts=> {    
+                posts.forEach(function(post){
+                    console.log(creator.creatorId,'====', creator._id, '=======', post._id);
+                    Facebookpost.findByIdAndUpdate({_id:post._id}, {$set:{creatorid:creator._id}})
+                    .exec()
+                    .then(result=>console.log('Creator id updated successfully.', creator.creatorId ))
+                    .catch(err=>res.status(404).json({
+                        error: err
+                    }));
+                })                
+            })
+                      
+          });       
+        
+    }) 
+   
+});
 module.exports = router;  
