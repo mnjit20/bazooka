@@ -5,6 +5,7 @@ class CreatorList extends Component {
     console.log("list", this.props.creators);
     const creators = this.props.creators;
     console.log("aaa", creators);
+
     return (
       <div>
         <div>
@@ -13,10 +14,7 @@ class CreatorList extends Component {
               <div className="detail">
                 <div className="image">
                   <a href="/influencer/519">
-                    <img
-                      src="https://yt3.ggpht.com/-_8lHSPO3nNI/AAAAAAAAAAI/AAAAAAAAAAA/-THVRONaQco/s88-c-k-no-mo-rj-c0xffffff/photo.jpg"
-                      className=""
-                    />
+                    <img src={creator.yt_imageUrl} className="" />
                     <img src="http://aspire.firstwall.com/assets/images/profilepic.png" />
                   </a>
                 </div>
@@ -25,8 +23,8 @@ class CreatorList extends Component {
                     FailArmy
                   </a>
                 </span>
-                <span className="type ">Entertainment</span>
-                <span className="loc ">Chandigarh</span>
+                <span className="type ">{creator.category_name}</span>
+                <span className="loc ">{creator.user_state}</span>
               </div>
               <div className="socail">
                 <span>Social Platform</span>
@@ -44,7 +42,11 @@ class CreatorList extends Component {
                 </ul>
               </div>
               <div className="total">
-                <span className="">31M</span>
+                <span className="">
+                  {creator.fb_fan_count +
+                    creator.yt_subscriber_count +
+                    creator.ig_followers_count}
+                </span>
                 Total Reach
               </div>
               <a className="view" href="/influencer/519">
@@ -57,13 +59,5 @@ class CreatorList extends Component {
     );
   }
 }
-
-// const CreatorList = props => {
-//   {
-//     console.log("from creator_list", props);
-//   }
-//   return (
-//   );
-// };
 
 export default CreatorList;

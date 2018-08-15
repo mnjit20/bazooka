@@ -97,13 +97,13 @@ router.get("/list/:youtube?/:facebook?/:insta?/:limit?", (req, res) => {
 
   //const query = { category_name: "Entertainment" };
   Creator.find({
-    category_name: ["Health", "Auto"],
+    /*category_name: ["Health", "Auto"],*/
     reach: { $gt: 0 },
     fb_fan_count: { $gt: 3382, $lt: 18503 }
   })
     .sort({ reach: -1 })
     .collation({ locale: "en_US", numericOrdering: true })
-    .limit(20)
+    .limit(30)
     .populate("cat_id", ["wall_cat", "wall_cat_code"])
     .exec()
     .then(creators => {
@@ -111,7 +111,7 @@ router.get("/list/:youtube?/:facebook?/:insta?/:limit?", (req, res) => {
         count: creators.length,
         creator: creators.map(creator => {
           return {
-            name: creator.name,
+            /*name: creator.name,
             _id: creator._id,
             reach: creator.reach,
             cat_id: creator.cat_id,
@@ -119,7 +119,21 @@ router.get("/list/:youtube?/:facebook?/:insta?/:limit?", (req, res) => {
             category_name: creator.category_name,
             fb_fan_count: creator.fb_fan_count,
             ig_followers_count: creator.ig_followers_count,
-            yt_subscriber_count: creator.yt_subscriber_count
+            yt_subscriber_count: creator.yt_subscriber_count,*/
+            name: creator.name,
+            _id: creator._id,
+            reach: creator.reach,
+            cat_id: creator.cat_id,
+            channel_name: creator.channel_name,
+            category_name: creator.category_name,
+            fb_fan_count: creator.fb_fan_count,
+            yt_subscriber_count: creator.yt_subscriber_count,
+            ig_followers_count: creator.ig_followers_count,
+            address: creator.address,
+            yt_imageUrl: creator.yt_imageUrl,
+            isInf: creator.isInf,
+            status: creator.status,
+            user_state: creator.user_state
           };
         })
       };

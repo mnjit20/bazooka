@@ -2,8 +2,13 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import CreatorList from "./creatorlist";
 import { connect } from "react-redux";
+import { fetchCreators } from "../../reducers/dashboard";
 
 class Creator extends Component {
+  componentDidMount() {
+    fetchCreators();
+  }
+
   render() {
     console.log("creator-component", this.props);
     console.log("creator-component", this.props);
@@ -17,7 +22,10 @@ class Creator extends Component {
 }
 
 const mapStateToProps = state => state;
-const connectedCreator = connect(mapStateToProps)(Creator);
+const connectedCreator = connect(
+  mapStateToProps,
+  fetchCreators
+)(Creator);
 export default connectedCreator;
 
 //export default Creator;
