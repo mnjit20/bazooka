@@ -7,8 +7,8 @@ class ResultBar extends Component {
   render() {
     return (
       <div className="midBox">
-        <CreatorBox />
-        <ReachBox />
+        {/* <CreatorBox />
+        <ReachBox /> */}
 
         <Creator />
       </div>
