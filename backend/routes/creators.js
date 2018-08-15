@@ -111,15 +111,6 @@ router.get("/list/:youtube?/:facebook?/:insta?/:limit?", (req, res) => {
         count: creators.length,
         creator: creators.map(creator => {
           return {
-            /*name: creator.name,
-            _id: creator._id,
-            reach: creator.reach,
-            cat_id: creator.cat_id,
-            channel_name: creator.channel_name,
-            category_name: creator.category_name,
-            fb_fan_count: creator.fb_fan_count,
-            ig_followers_count: creator.ig_followers_count,
-            yt_subscriber_count: creator.yt_subscriber_count,*/
             name: creator.name,
             _id: creator._id,
             reach: creator.reach,

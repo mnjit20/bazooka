@@ -8,8 +8,8 @@ class CreatorList extends Component {
 
     return (
       <div>
-        <div>
-          {creators.map(creator => (
+        {creators.map(creator => (
+          <div key={creator._id}>
             <div className="box ">
               <div className="detail">
                 <div className="image">
@@ -20,7 +20,7 @@ class CreatorList extends Component {
                 </div>
                 <span className="title">
                   <a href="/influencer/519" className="">
-                    FailArmy
+                    {creator.channel_name}
                   </a>
                 </span>
                 <span className="type ">{creator.category_name}</span>
@@ -53,8 +53,8 @@ class CreatorList extends Component {
                 View Profile
               </a>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     );
   }
