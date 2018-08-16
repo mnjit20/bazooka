@@ -99,11 +99,11 @@ router.get("/list/:youtube?/:facebook?/:insta?/:limit?", (req, res) => {
   Creator.find({
     /*category_name: ["Health", "Auto"],*/
     reach: { $gt: 0 },
-    fb_fan_count: { $gt: 3382, $lt: 18503 }
+    fb_fan_count: { $gt: 0, $lt: 18503000 }
   })
     .sort({ reach: -1 })
     .collation({ locale: "en_US", numericOrdering: true })
-    .limit(30)
+    .limit(100)
     .populate("cat_id", ["wall_cat", "wall_cat_code"])
     .exec()
     .then(creators => {
