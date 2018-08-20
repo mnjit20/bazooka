@@ -2,17 +2,7 @@ import axios from "axios";
 
 import { getCreatorsList, getStatesList } from "../lib/dashboardServices";
 
-console.log("getCreatorsList bb", getCreatorsList, getStatesList);
-
-// async function getUser() {
-//   try {
-//     const response = await axios.get("http://localhost:7000/creators/list/");
-//     console.log("response from axios", response);
-//     return response;
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
+//console.log("getCreatorsList bb", getCreatorsList, getStatesList);
 
 const initState = {
   creators: [],
@@ -20,6 +10,7 @@ const initState = {
 };
 
 export const fetchCreators = () => {
+  console.log("===== fetchCreators");
   return dispatch => {
     getCreatorsList().then(creator =>
       dispatch(loadCreators(creator.data.creator))
@@ -28,6 +19,7 @@ export const fetchCreators = () => {
 };
 
 export const fetchStates = () => {
+  console.log("===== fetchStates");
   return dispatch => {
     getStatesList().then(states => dispatch(loadStates(states.data.category)));
   };

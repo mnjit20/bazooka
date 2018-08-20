@@ -7,8 +7,8 @@ import { fetchCreators, fetchStates } from "../../reducers/dashboard";
 
 class Creator extends Component {
   componentDidMount() {
-    fetchCreators();
-    fetchStates();
+    this.props.fetchCreators();
+    this.props.fetchStates();
   }
 
   render() {
@@ -25,19 +25,8 @@ class Creator extends Component {
 
 const mapStateToProps = state => state;
 
-const mapDispatchToProps = dispatch => {
-  return {
-    actions: bindActionCreators(
-      Object.assign({}, fetchCreators, fetchStates),
-      dispatch
-    )
-  };
-};
-
 const connectedCreator = connect(
   mapStateToProps,
-  mapDispatchToProps
+  { fetchCreators, fetchStates }
 )(Creator);
 export default connectedCreator;
-
-//export default Creator;
