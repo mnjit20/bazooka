@@ -1,8 +1,8 @@
 import axios from "axios";
 
-import { getCreatorsList } from "../lib/dashboardServices";
+import { getCreatorsList, getStatesList } from "../lib/dashboardServices";
 
-console.log("getCreatorsList bb", getCreatorsList);
+console.log("getCreatorsList bb", getCreatorsList, getStatesList);
 
 // async function getUser() {
 //   try {
@@ -15,7 +15,8 @@ console.log("getCreatorsList bb", getCreatorsList);
 // }
 
 const initState = {
-  creators: []
+  creators: [],
+  states: []
 };
 
 export const fetchCreators = () => {
@@ -26,19 +27,34 @@ export const fetchCreators = () => {
   };
 };
 
+export const fetchStates = () => {
+  return dispatch => {
+    getStatesList().then(states => dispatch(loadStates(states.data.category)));
+  };
+};
+
 const CREATORS_LOAD = "CREATORS_LOAD";
+const STATES_LOAD = "STATES_LOAD";
+const LOAD_DASHBOARD = "LOAD_DASHBOARD";
 
 export const loadCreators = creators => ({
   type: CREATORS_LOAD,
   payload: creators
 });
 
+export const loadStates = states => ({
+  type: STATES_LOAD,
+  payload: states
+});
+
 export default (state = initState, action) => {
   switch (action.type) {
-    case "LOAD_DASHBOARD":
+    case LOAD_DASHBOARD:
       return { ...state };
     case CREATORS_LOAD:
       return { ...state, creators: action.payload };
+    case STATES_LOAD:
+      return { ...state, states: action.payload };
     default:
       return state;
   }
