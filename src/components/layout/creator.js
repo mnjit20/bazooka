@@ -12,8 +12,6 @@ class Creator extends Component {
   }
 
   render() {
-    console.log("creator-component", this.props);
-    console.log("creator-component", this.props);
     return (
       <div className="inflBox">
         <div className="clear" />
