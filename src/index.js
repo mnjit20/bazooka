@@ -8,7 +8,6 @@ import { Provider } from "react-redux";
 
 const render = () => {
   const state = store.getState();
-  console.log("from init", state);
   ReactDOM.render(
     <Provider store={store}>
       <App />

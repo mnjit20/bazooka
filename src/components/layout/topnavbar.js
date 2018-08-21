@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+//import { Link } from 'react-router-dom';
 
 class TopNavbar extends Component {
   render() {
     return (
       <div className="topBox">
         <div className="leftTop">
-          <span className="btn"></span>
+          <span className="btn" />
           <span className="logo">
             <a href="http://aspire.firstwall.com/dashboard/">
               <img src="http://aspire.firstwall.com/assets/images/logo.png" />
@@ -22,18 +22,27 @@ class TopNavbar extends Component {
               </span>
             </li>
             <li>
-              <a className="bell" href="">bell</a>
+              <a className="bell" href="">
+                bell
+              </a>
             </li>
             <li>
-              <a className="setting" href="">setting</a>
+              <a className="setting" href="">
+                setting
+              </a>
             </li>
             <li>
-              <a target="_self" className="logout" href="http://aspire.firstwall.com/logout/">logout</a>
+              <a
+                target="_self"
+                className="logout"
+                href="http://aspire.firstwall.com/logout/">
+                logout
+              </a>
             </li>
           </ul>
         </div>
       </div>
-    )
+    );
   }
 }
 

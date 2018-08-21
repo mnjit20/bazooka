@@ -1,15 +1,14 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+//import logo from "./logo.svg";
 import "./App.css";
 import TopNavbar from "./components/layout/topnavbar";
-import Footer from "./components/layout/footer";
+//import Footer from "./components/layout/footer";
 import LeftNavBar from "./components/layout/leftnavbar";
 import RightFilterNavBar from "./components/layout/rightfilternavbar";
 import ResultBar from "./components/layout/resultbar";
 import { connect } from "react-redux";
 class App extends Component {
   render() {
-    console.log("app-component", this.props);
     return (
       <div className="wrapper">
         <div className="dashBoardBox">

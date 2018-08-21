@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
 
 class Footer extends Component {
   render() {
@@ -7,7 +6,7 @@ class Footer extends Component {
       <div>
         <h1> this is footer</h1>
       </div>
-    )
+    );
   }
 }
 

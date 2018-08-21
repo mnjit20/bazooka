@@ -1,20 +1,14 @@
 import axios from "axios";
 
 export const getCreatorsList = () => {
-  console.log("fetch api loader called");
-  return (
-    axios
-      .get("/creators/list/", { crossdomain: true })
-      // .then(res => {
-      //   // console.log(res.data);
-      //   res.data;
-      // })
-      .catch(e => console.log(e))
-  );
+  console.log("FETCH API FOR getCreatorsList");
+  return axios
+    .get("/creators/list/", { crossdomain: true })
+    .catch(e => console.log(e));
 };
 
 export const getStatesList = () => {
-  console.log("FETCH API FOR STATES");
+  console.log("FETCH API FOR STATES getStatesList");
   return (
     axios
       .get("/states/all/", { crossdomain: true })

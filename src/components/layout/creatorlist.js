@@ -9,6 +9,7 @@ class CreatorList extends Component {
       <div>
         {creators.map(creator => (
           // <div key={creator._id}>
+
           <div className="box " key={creator._id}>
             <div className="detail">
               <div className="image">

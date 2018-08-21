@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import CreatorList from "./creatorlist";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+//import { bindActionCreators } from "redux";
 import { fetchCreators, fetchStates } from "../../reducers/dashboard";
 
 class Creator extends Component {
