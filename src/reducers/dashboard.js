@@ -10,7 +10,7 @@ const initState = {
 };
 
 export const fetchCreators = () => {
-  console.log("===== fetchCreators");
+  console.log("Reducer Function ===== fetchCreators");
   return dispatch => {
     getCreatorsList().then(creator =>
       dispatch(loadCreators(creator.data.creator))
@@ -19,7 +19,7 @@ export const fetchCreators = () => {
 };
 
 export const fetchStates = () => {
-  console.log("===== fetchStates");
+  console.log("Reducer Function ===== fetchStates");
   return dispatch => {
     getStatesList().then(states => dispatch(loadStates(states.data.category)));
   };

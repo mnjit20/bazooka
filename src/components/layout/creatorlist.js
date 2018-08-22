@@ -4,7 +4,6 @@ class CreatorList extends Component {
   render() {
     const creators = this.props.creators;
     console.log(" creators", creators);
-
     return (
       <div>
         {creators.map(creator => (
