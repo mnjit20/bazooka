@@ -2,9 +2,21 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 //import { bindActionCreators } from "redux";
 //import { Link } from 'react-router-dom';
+const socialPlatformFilter = ["youtube", "facebook", "instagram"];
 
 class RightFilterNavBar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleSocialPlatformClick = this.handleSocialPlatformClick.bind(this);
+  }
   componentDidMount() {}
+
+  handleSocialPlatformClick(event) {
+    //console.log("this is:", this);
+    console.log("Clicked value==", event.target.value);
+  }
+
   render() {
     return (
       <div className="rightBox">
@@ -32,18 +44,17 @@ class RightFilterNavBar extends Component {
             <div className="fields plateSelect">
               <h2>Platform</h2>
               <ul>
-                <li>
-                  <label>Youtube</label>{" "}
-                  <input type="checkbox" value="1" name="socialsorting[]" />
-                </li>
-                <li>
-                  <label>Facebook</label>
-                  <input type="checkbox" value="2" name="socialsorting[]" />
-                </li>
-                <li>
-                  <label>Instagram</label>
-                  <input type="checkbox" value="3" name="socialsorting[]" />
-                </li>
+                {socialPlatformFilter.map(social => (
+                  <li key={social}>
+                    <label>{social}</label>
+                    <input
+                      onChange={this.handleSocialPlatformClick}
+                      type="checkbox"
+                      value={social}
+                      name="socialPlatformFilter[]"
+                    />
+                  </li>
+                ))}
               </ul>
             </div>
             <div className="fields rangeSlider">
