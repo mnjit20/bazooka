@@ -2,11 +2,20 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 //import { bindActionCreators } from "redux";
 //import { Link } from 'react-router-dom';
+
 const socialPlatformFilter = ["youtube", "facebook", "instagram"];
 
 class RightFilterNavBar extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      socialPlatformFilter: {
+        youtube: false,
+        facebook: false,
+        instagram: false
+      }
+    };
 
     this.handleSocialPlatformClick = this.handleSocialPlatformClick.bind(this);
   }
@@ -14,7 +23,11 @@ class RightFilterNavBar extends Component {
 
   handleSocialPlatformClick(event) {
     //console.log("this is:", this);
-    console.log("Clicked value==", event.target.value);
+    let currentEvent = event.target.value;
+    this.state.socialPlatformFilter[currentEvent] = !this.state
+      .socialPlatformFilter[currentEvent];
+    console.log(this.state.socialPlatformFilter);
+    console.log(this.props);
   }
 
   render() {

@@ -10,18 +10,20 @@ import { connect } from "react-redux";
 class App extends Component {
   render() {
     return (
-      <div className="wrapper">
-        <div className="dashBoardBox">
-          <TopNavbar />
-          <LeftNavBar />
-          <RightFilterNavBar />
-          <div id="content-wrapper">
-            <div />
-          </div>
+      console.log("aaaaaaaaaaaaa==", this.state) || (
+        <div className="wrapper">
+          <div className="dashBoardBox">
+            <TopNavbar />
+            <LeftNavBar />
+            <RightFilterNavBar />
+            <div id="content-wrapper">
+              <div />
+            </div>
 
-          <ResultBar />
+            <ResultBar />
+          </div>
         </div>
-      </div>
+      )
     );
   }
 }
