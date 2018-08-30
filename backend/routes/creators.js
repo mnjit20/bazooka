@@ -103,7 +103,7 @@ router.get("/list/:youtube?/:facebook?/:insta?/:limit?", (req, res) => {
   })
     .sort({ reach: -1 })
     .collation({ locale: "en_US", numericOrdering: true })
-    .limit(10)
+    .limit(100)
     .populate("cat_id", ["wall_cat", "wall_cat_code"])
     .exec()
     .then(creators => {

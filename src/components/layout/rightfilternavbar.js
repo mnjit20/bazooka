@@ -22,7 +22,6 @@ class RightFilterNavBar extends Component {
   componentDidMount() {}
 
   handleSocialPlatformClick(event) {
-    //console.log("this is:", this);
     let currentEvent = event.target.value;
     this.state.socialPlatformFilter[currentEvent] = !this.state
       .socialPlatformFilter[currentEvent];
