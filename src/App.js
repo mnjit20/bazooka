@@ -5,7 +5,7 @@ import TopNavbar from "./components/layout/topnavbar";
 import Footer from "./components/layout/footer";
 import LeftNavBar from "./components/layout/leftnavbar";
 import RightFilterNavBar from "./components/layout/rightfilternavbar";
-import ResultBar from "./components/layout/resultbar";
+import ResultBox from "./containers/container_result_box";
 import { connect } from "react-redux";
 class App extends Component {
   render() {
@@ -19,7 +19,7 @@ class App extends Component {
             <div />
           </div>
 
-          <ResultBar />
+          <ResultBox />
         </div>
         <Footer />
       </div>

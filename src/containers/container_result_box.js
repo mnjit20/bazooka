@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-//import { Link } from "react-router-dom";
-import Creator from "./creator";
-import { CreatorBox, ReachBox } from "../dashboard/creatorBox";
+import Creator from "../components/layout/creator";
+import { CreatorBox, ReachBox } from "../components/dashboard/creatorBox";
 
 class ResultBar extends Component {
   render() {
