@@ -23,10 +23,18 @@ class RightFilterNavBar extends Component {
 
   handleSocialPlatformClick(event) {
     let currentEvent = event.target.value;
-    this.state.socialPlatformFilter[currentEvent] = !this.state
-      .socialPlatformFilter[currentEvent];
-    console.log(this.state.socialPlatformFilter);
-    console.log(this.props);
+    this.setState({
+      socialPlatformFilter: {
+        ...this.state.socialPlatformFilter,
+        [currentEvent]: !this.state.socialPlatformFilter[currentEvent]
+      }
+    });
+
+    setTimeout(() => {
+      console.log("Social selection:", this.state.socialPlatformFilter);
+    }, 200);
+
+    //console.log(this.props);
   }
 
   render() {

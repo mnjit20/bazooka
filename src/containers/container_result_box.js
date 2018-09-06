@@ -1,17 +1,35 @@
 import React, { Component } from "react";
-import Creator from "../components/layout/creator";
-import { CreatorBox, ReachBox } from "../components/dashboard/creatorBox";
+import { CreatorBox, ReachBox } from "../components/layout/creatorBox";
+import { fetchCreators, fetchStates } from "../reducers/dashboard";
+import CreatorList from "../components/layout/creatorlist";
+import { connect } from "react-redux";
 
 class ResultBar extends Component {
+  componentDidMount() {
+    this.props.fetchCreators();
+    this.props.fetchStates();
+  }
   render() {
     return (
       <div className="midBox">
         <CreatorBox />
         <ReachBox />
-        <Creator />
+
+        <div className="inflBox">
+          <div className="clear" />
+          <CreatorList creators={this.props.creators} />
+        </div>
       </div>
     );
   }
 }
 
-export default ResultBar;
+//export default ResultBar;
+
+const mapStateToProps = state => state;
+
+const connectedCreator = connect(
+  mapStateToProps,
+  { fetchCreators, fetchStates }
+)(ResultBar);
+export default connectedCreator;
