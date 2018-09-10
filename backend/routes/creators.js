@@ -24,7 +24,7 @@ router.post("/all", (req, res) => {
   Creator.find({ reach: { $gt: 0 } })
     .sort({ reach: -1 })
     .collation({ locale: "en_US", numericOrdering: true })
-    .limit(50)
+    .limit(5)
     .populate("cat_id", ["wall_cat", "wall_cat_code"])
     .exec()
     .then(creators => {
@@ -103,7 +103,7 @@ router.get("/list/:youtube?/:facebook?/:insta?/:limit?", (req, res) => {
   })
     .sort({ reach: -1 })
     .collation({ locale: "en_US", numericOrdering: true })
-    .limit(100)
+    .limit(20)
     .populate("cat_id", ["wall_cat", "wall_cat_code"])
     .exec()
     .then(creators => {

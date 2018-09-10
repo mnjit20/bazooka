@@ -5,10 +5,34 @@ import CreatorList from "../components/layout/creatorlist";
 import { connect } from "react-redux";
 
 class ResultBar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      timer: 1
+    };
+  }
+
+  update() {
+    this.setState({
+      timer: this.state.timer + 1
+    });
+  }
+
   componentDidMount() {
     this.props.fetchCreators();
     this.props.fetchStates();
+
+    // setInterval(() => {
+    //   console.log("inside time interval");
+
+    //   // this.setState({
+    //   //   timer: this.
+    //   // });
+    //   this.update();
+    // }, 5000);
   }
+
   render() {
     return (
       <div className="midBox">
@@ -17,7 +41,7 @@ class ResultBar extends Component {
 
         <div className="inflBox">
           <div className="clear" />
-          <CreatorList creators={this.props.creators} />
+          <CreatorList creators={this.props.creators} time={this.state.timer} />
         </div>
       </div>
     );
