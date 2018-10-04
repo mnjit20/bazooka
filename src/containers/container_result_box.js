@@ -22,15 +22,6 @@ class ResultBar extends Component {
   componentDidMount() {
     this.props.fetchCreators();
     this.props.fetchStates();
-
-    // setInterval(() => {
-    //   console.log("inside time interval");
-
-    //   // this.setState({
-    //   //   timer: this.
-    //   // });
-    //   this.update();
-    // }, 5000);
   }
 
   render() {
@@ -48,7 +39,6 @@ class ResultBar extends Component {
   }
 }
 
-//export default ResultBar;
 
 const mapStateToProps = state => state;
 

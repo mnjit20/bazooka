@@ -12,9 +12,12 @@ export const getStatesList = () => {
   return (
     axios
       .get("/states/all/", { crossdomain: true })
-      // .then(res => {
-      //   console.log("======", res.data);
-      // })
       .catch(e => console.log(e))
   );
 };
+
+
+export const handleSocialButtonClick = () => {
+  console.log('social btn ');
+
+}
