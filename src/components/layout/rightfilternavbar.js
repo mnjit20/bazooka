@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 //import { bindActionCreators } from "redux";
 //import { Link } from 'react-router-dom';
+import { handleSocialFilterRHS } from "../../reducers/dashboard";
+
 
 const socialPlatformFilter = ["youtube", "facebook", "instagram"];
 
@@ -21,8 +23,15 @@ class RightFilterNavBar extends Component {
   }
   componentDidMount() {}
 
+  handleSocialFilterRHS = this.props.handleSocialFilterRHS;
+
   handleSocialPlatformClick(event) {
     let currentEvent = event.target.value;
+
+    handleSocialFilterRHS({
+      ...this.state.socialPlatformFilter,
+      [currentEvent]: !this.state.socialPlatformFilter[currentEvent]
+    });
     this.setState({
       socialPlatformFilter: {
         ...this.state.socialPlatformFilter,
@@ -30,9 +39,9 @@ class RightFilterNavBar extends Component {
       }
     });
 
-    setTimeout(() => {
-      console.log("Social selection:", this.state.socialPlatformFilter);
-    }, 200);
+    // setTimeout(() => {
+    //   console.log("Social selection:", this.state.socialPlatformFilter);
+    // }, 200);
 
     //console.log(this.props);
   }
@@ -122,5 +131,5 @@ class RightFilterNavBar extends Component {
 //export default RightFilterNavBar;
 
 const mapStateToProps = state => state;
-const connectedRightFilterNavBar = connect(mapStateToProps)(RightFilterNavBar);
+const connectedRightFilterNavBar = connect(mapStateToProps, {handleSocialFilterRHS})(RightFilterNavBar);
 export default connectedRightFilterNavBar;
