@@ -21,22 +21,25 @@ class RightFilterNavBar extends Component {
 
     this.handleSocialPlatformClick = this.handleSocialPlatformClick.bind(this);
   }
-  componentDidMount() {}
+  componentDidMount() { }
 
-  handleSocialFilterRHS = this.props.handleSocialFilterRHS;
+  // this.props.handleSocialFilterRHS;
 
   handleSocialPlatformClick(event) {
     let currentEvent = event.target.value;
 
-    handleSocialFilterRHS({
+    this.props.handleSocialFilterRHS({
       ...this.state.socialPlatformFilter,
-      [currentEvent]: !this.state.socialPlatformFilter[currentEvent]
+      [currentEvent]: !this.state.socialPlatformFilter[currentEvent],
+      isSocialCustomFilterApplied: true
+
     });
     this.setState({
       socialPlatformFilter: {
         ...this.state.socialPlatformFilter,
-        [currentEvent]: !this.state.socialPlatformFilter[currentEvent]
-      }
+        [currentEvent]: !this.state.socialPlatformFilter[currentEvent],
+        isSocialCustomFilterApplied: true
+      },
     });
 
     // setTimeout(() => {
@@ -131,5 +134,5 @@ class RightFilterNavBar extends Component {
 //export default RightFilterNavBar;
 
 const mapStateToProps = state => state;
-const connectedRightFilterNavBar = connect(mapStateToProps, {handleSocialFilterRHS})(RightFilterNavBar);
+const connectedRightFilterNavBar = connect(mapStateToProps, { handleSocialFilterRHS })(RightFilterNavBar);
 export default connectedRightFilterNavBar;

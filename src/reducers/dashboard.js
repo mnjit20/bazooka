@@ -10,16 +10,15 @@ const initState = {
   socialPlatformFilter: {
     youtube: false,
     facebook: false,
-    instagram: false
+    instagram: false,
+    isSocialCustomFilterApplied: false
   },
-  social_click: false
-
 };
 
 export const fetchCreators = () => {
   console.log("Reducer Function ===== fetchCreators");
   return dispatch => {
-      getCreatorsList().then(creator =>
+    getCreatorsList().then(creator =>
       dispatch(loadCreators(creator.data.creator))
     );
   };
@@ -29,13 +28,13 @@ export const fetchStates = () => {
   console.log("Reducer Function ===== fetchStates");
   return dispatch => {
     getStatesList().then(states => dispatch(loadStates(states.data.category)))
-    };
+  };
 };
 
 export const handleSocialFilterRHS = (event) => {
   console.log("Reducer Function ===== social filter rhs", event);
   return dispatch => {
-    dispatch(getSocialFilterRHS(event));       
+    dispatch(getSocialFilterRHS(event));
   };
 };
 
@@ -72,7 +71,7 @@ export default (state = initState, action) => {
     case STATES_LOAD:
       return { ...state, states: action.payload };
     case FILTER_USING_SOCIAL_BUTTONS:
-      return {...state, socialPlatformFilter: action.payload};
+      return { ...state, socialPlatformFilter: action.payload };
     default:
       return state;
   }

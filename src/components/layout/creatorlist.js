@@ -9,8 +9,8 @@ class CreatorList extends Component {
     return (
       <div>
         {creators.map(creator => (
-          // <div key={creator._id}>
-          <CreatorWithLogs data={creator} time={this.props.time} />
+
+          < CreatorWithLogs key={creator._id} data={creator} time={this.props.time} />
         ))}
       </div>
     );

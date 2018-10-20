@@ -32,7 +32,7 @@ class ResultBar extends Component {
 
         <div className="inflBox">
           <div className="clear" />
-          <CreatorList creators={this.props.creators} time={this.state.timer} />
+          <CreatorList key={this.props.creators} creators={this.props.creators} time={this.state.timer} />
         </div>
       </div>
     );
