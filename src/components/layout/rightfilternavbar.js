@@ -122,7 +122,7 @@ class RightFilterNavBar extends Component {
             </div>
 
             <button type="submit" className="submit" name="submit">
-              Submit
+              Submit-test
             </button>
           </form>
         </div>
